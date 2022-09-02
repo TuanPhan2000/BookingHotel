@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout :: head">
+</head>
+<body>
+
+<nav th:replace="layout :: nav"></nav>
+<!-- END nav -->
+
+<div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a href="home.html">Home</a></span> <span>Register</span></p>
+                    <h1 class="mb-4 bread">Register</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-9">
+            <div class="col-md-6 order-md-last d-flex" style="margin-left: 300px">
+                <form th:action="@{/registration}" class="bg-white p-5 contact-form" th:object="${user}" method="post">
+                    <div class="form-group">
+                        <div class="alert alert-warning" th:text="${error}" th:if="${error}"></div>
+                        <div class="alert alert-warning" th:text="${success}" th:if="${success}"></div>
+                        <div class="alert alert-warning" th:text="${exp}" th:if="${exp}"></div>
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name" th:field="*{name}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}" required>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" th:field="*{confirmPassword}" required>
+                        <div class="alert alert-warning" th:if="${#fields.hasErrors('${user}')}" th:errors="${user}"></div>
+                        <small id="message" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Sign up" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer th:replace="layout :: footer">
+
+</footer>
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/jquery.animateNumber.min.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="/js/google-map.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    $(function() {
+        $("#confirmPassword").keyup(function() {
+            var password = $("#password").val();
+            $("#message").html(password === $(this).val() ? "Passwords match." : "Passwords do not match!");
+        });
+
+    });
+</script>
+
+</body>
+</html>
