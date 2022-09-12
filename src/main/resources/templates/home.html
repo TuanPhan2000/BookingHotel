@@ -43,13 +43,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <form action="#" class="booking-form">
+                <form th:action="@{/searchRoom}" class="booking-form" method="post">
                     <div class="row">
                         <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
                                     <label for="#">Check-in Date</label>
-                                    <input type="text" class="form-control checkin_date" placeholder="Check-in date">
+                                    <input th:name="checkin" type="text" class="form-control checkin_date" placeholder="Check-in date">
                                 </div>
                             </div>
                         </div>
@@ -57,24 +57,19 @@
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
                                     <label for="#">Check-out Date</label>
-                                    <input type="text" class="form-control checkout_date" placeholder="Check-out date">
+                                    <input th:name="checkout" type="text" class="form-control checkout_date" placeholder="Check-out date">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Room</label>
+                                    <label for="#">Category</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Suite</option>
-                                                <option value="">Family Room</option>
-                                                <option value="">Deluxe Room</option>
-                                                <option value="">Classic Room</option>
-                                                <option value="">Superior Room</option>
-                                                <option value="">Luxury Room</option>
+                                            <select name="category" id="" class="form-control">
+                                                <option th:value="${c.getId()}" th:each="c : ${listCategory}">[[${c.getName()}]]</option>
                                             </select>
                                         </div>
                                     </div>
@@ -84,17 +79,12 @@
                         <div class="col-md d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Customer</label>
+                                    <label for="#">Size</label>
                                     <div class="form-field">
                                         <div class="select-wrap">
                                             <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1 Adult</option>
-                                                <option value="">2 Adult</option>
-                                                <option value="">3 Adult</option>
-                                                <option value="">4 Adult</option>
-                                                <option value="">5 Adult</option>
-                                                <option value="">6 Adult</option>
+                                            <select name="size" id="" class="form-control">
+                                                <option th:value="${s.getId()}" th:each="s : ${listSize}">[[${s.getSize()}]]</option>
                                             </select>
                                         </div>
                                     </div>

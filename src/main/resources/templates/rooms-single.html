@@ -29,32 +29,24 @@
           <div class="col-lg-8">
           	<div class="row">
           		<div class="col-md-12 ftco-animate">
-          			<h2 class="mb-4">Family Room</h2>
+          			<h2 class="mb-4" th:text="${room.getCategory().getName()}"></h2>
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="room-img" style="background-image: url(../../../../../deluxe-master/images/room-1.jpg);"></div>
-          				</div>
-          				<div class="item">
-          					<div class="room-img" style="background-image: url(../../../../../deluxe-master/images/room-2.jpg);"></div>
-          				</div>
-          				<div class="item">
-          					<div class="room-img" style="background-image: url(../../../../../deluxe-master/images/room-3.jpg);"></div>
+          					<image class="room-img" th:src="${room.getImageUrl()}"></image>
           				</div>
           			</div>
           		</div>
           		<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
-    						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
     						<div class="d-md-flex mt-5 mb-5">
     							<ul class="list">
-	    							<li><span>Max:</span> 3 Persons</li>
-	    							<li><span>Size:</span> 45 m2</li>
+	    							<li><span>Size:</span> [[${room.getSize().getSize()}]]</li>
+	    							<li><span>Price:</span> $[[${room.getPrice()}]]</li>
 	    						</ul>
 	    						<ul class="list ml-md-5">
-	    							<li><span>View:</span> Sea View</li>
-	    							<li><span>Bed:</span> 1</li>
+	    							<li><span>Stock:</span> [[${room.getStock()}]]</li>
+	    							<li><span>Description:</span> [[${room.getDescription()}]]</li>
 	    						</ul>
     						</div>
-    						<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
           		</div>
           		<div class="col-md-12 room-single ftco-animate mb-5 mt-4">
           			<h3 class="mb-4">Take A Tour</h3>
