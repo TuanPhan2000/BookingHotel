@@ -4,6 +4,7 @@ import com.example.bookinghotel.enity.User;
 import com.example.bookinghotel.enity.VerificationToken;
 import com.example.bookinghotel.service.serviceImpl.VerificationTokenServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,7 +15,6 @@ import java.util.UUID;
 
 @Component
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
-
 
     @Autowired
     private JavaMailSender mailSender;
@@ -46,7 +46,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
-        email.setText(event.getLocale() + "\r\n" + "Click on the link to authenticate " +"\r\n"+ "http://localhost:8080" + confirmationUrl);
+        email.setText(event.getLocale() + "\r\n" + "Click on the link to authenticate " +"\r\n"+ "http://192.168.1.81:8080" + confirmationUrl);
         mailSender.send(email);
     }
 }
